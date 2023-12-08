@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Reserva - DJANGO_RESERVAS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Otros enlaces de estilos o scripts según sea necesario -->
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="alert alert-danger display-1 text-center"><h2>Eliminar Reserva</h2></div>
+        <div class="card">
+            <div class="card-body">
+                <p>¿Estás seguro de que deseas eliminar la reserva de {{ reserva.nombre }}?</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <input class="btn btn-danger" type="submit" name="submit" value="Eliminar Reserva">
+                </form>
+                <a href="{% url 'listar_reservas' %}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts adicionales según sea necesario -->
+</body>
+</html>

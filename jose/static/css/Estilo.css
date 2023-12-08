@@ -1,0 +1,63 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color:rgb(97, 94, 94);
+}
+
+.cubo{
+    background-color: burlywood;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    width: max-content;
+    text-align: center;
+    text-transform: capitalize;
+    font-family: 'Times New Roman', Times, serif;
+    display: block;
+}
+.cubo2 {
+    border: 20px;
+    display: flex;
+}
+.cubo3{
+    text-align: center;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    border-color: black;
+    border: 4px;
+    justify-content: center;
+    align-items: center;
+}
+.mb-3{
+    background-color: coral;
+    height: max-content;
+    width: 500px;
+    text-align: center;
+}
+
+.bost {
+    height: max-content;
+    width: max-content;
+    justify-content: center;
+    text-align: center;
+    margin-left: 300px;
+    text-decoration-style: solid;
+    -moz-text-decoration-style: solid;
+}
+.mt-4{
+    text-align: center;
+    justify-content: center;
+    width: max-content;
+    background-color: darkgray;
+}
+.card{
+    background-color: coral;
+}

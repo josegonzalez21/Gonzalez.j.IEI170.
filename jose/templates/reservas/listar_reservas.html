@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Listar Reservas - DJANGO_RESERVAS{% endblock %}
+
+{% block content %}
+    <!-- Encabezado informativo -->
+    <div class="alert alert-info display-1 text-center"><h1>Listado de Reservas</h1></div>
+
+    <!-- Contenedor para las cartas -->
+    <div class="card mb-3 cubo" >
+        <div class="card-container cubo">
+            <div class="card-header ">
+                <p>Reserva #1</p>
+            </div>
+            <div class="card-body cubo" >
+                <h5 class="card-title cubo">Jose miguel Angel gonzalez Aguilar</h5>
+                <p class="card-container Datos"> Rut:  22160203-k</p>
+                <p class="card-container Datos">Correo Electronico: jose.gonzalez259@inacapmail.cl</p>
+                <p class="card-container Datos">Ingenieria en informatica IEI 170</p>
+                <p class="card-container Datos">Profesor: Pedro Gaete</p>
+                
+            </div>
+        </div>
+    </div>
+    <div class="card-container cubo2">
+        {% for reserva in reservas %}
+            <!-- Carta para cada reserva -->
+            <div class="card mb-3 cubo">
+                <div class="card-header">
+                    Reserva #{{ reserva.id }}
+                </div>
+                <div class="card-body cubo">
+                    <h5 class="card-title cubo">{{ reserva.nombre }}</h5>
+                    <p class="card-container Datos">Fecha Reserva: {{ reserva.fecha_reserva }} </p>
+                    <p class="card-container Datos">Hora Reserva: {{ reserva.hora_reserva }}</p>
+                    <p class="card-container Datos">Correo Electrónico: {{ reserva.correo_electronico }}</p>
+                    <p class="card-container Datos">Observación: {{ reserva.observacion }}</p>
+                    <p class="card-container Datos">Hora Reserva: {{ reserva.hora_reserva }}</p>
+                </div>
+                <div class="card-footer">
+                    <!-- Acciones para cada reserva (Modificar y Eliminar) -->
+                    <a href="{% url 'modificar_reserva' pk=reserva.id %}" class="btn btn-warning btn-sm">
+                        <i class="fas fa-edit"></i> Modificar
+                    </a>
+                    <a href="{% url 'eliminar_reserva' pk=reserva.id %}" class="btn btn-danger btn-sm">
+                        <i class="fas fa-trash-alt"></i> Eliminar
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Enlace para agregar una nueva reserva -->
+    <a href="{% url 'agregar_reserva' %}" class="btn btn-success text-center">
+        <i class="fas fa-plus"></i> Agregar Reserva
+    </a>
+{% endblock %}

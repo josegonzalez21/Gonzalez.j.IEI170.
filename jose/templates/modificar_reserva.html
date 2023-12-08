@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+<div class="alert alert-info display-1 text-center"><h2>Modificar Reserva</h2></div>
+{% block title %}Modificar Reserva - DJANGO_RESERVAS{% endblock %}
+
+{% block content %}
+
+<div class="alert alert-info display-1 text-center"><h2>Modificar Reserva</h2></div>
+  <div class="card bost">
+    <form method="post" action="{% url 'modificar_reserva' pk=reserva.id %}" class="my-4">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" value="{{ reserva.nombre }}" class="form-control" required maxlength="80">
+        </div>
+        <div class="mb-3">
+            <label for="telefono" class="form-label">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" value="{{ reserva.telefono }}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="fecha" class="form-label">Fecha de Reserva:</label>
+            <input type="date" id="fecha" name="fecha" value="{{ reserva.fecha }}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="hora" class="form-label">Hora de Reserva:</label>
+            <input type="time" id="hora" name="hora" value="{{ reserva.hora }}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="cantidad_personas" class="form-label">Cantidad de Personas:</label>
+            <input type="number" id="cantidad_personas" name="cantidad_personas" value="{{ reserva.cantidad_personas }}" class="form-control" required min="1" max="15">
+        </div>
+        <div class="mb-3">
+            <label for="correo" class="form-label">Correo Electrónico:</label>
+            <input type="email" id="correo" name="correo" value="{{ reserva.correo }}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="estado" class="form-label">Estado:</label>
+            <select id="estado" name="estado" class="form-select" required>
+                <option value="RESERVADO" {% if reserva.estado == "RESERVADO" %}selected{% endif %}>RESERVADO</option>
+                <option value="COMPLETADA" {% if reserva.estado == "COMPLETADA" %}selected{% endif %}>COMPLETADA</option>
+                <option value="ANULADA" {% if reserva.estado == "ANULADA" %}selected{% endif %}>ANULADA</option>
+                <option value="NO_ASISTEN" {% if reserva.estado == "NO_ASISTEN" %}selected{% endif %}>NO ASISTEN</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="observacion" class="form-label">Observación:</label>
+            <textarea id="observacion" name="observacion" rows="4" cols="50" class="form-control">{{ reserva.observacion }}</textarea>
+        </div>
+        <input class="btn btn-primary" type="submit" name="submit" value="Guardar Cambios">
+
+        
+    </form>
+    <a href="{% url 'listar_reservas' %}" class="btn btn-secondary">Volver al Listado</a>
+   </div>
+{% endblock %}
